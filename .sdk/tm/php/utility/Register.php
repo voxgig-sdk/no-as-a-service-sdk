@@ -1,0 +1,67 @@
+<?php
+declare(strict_types=1);
+
+// NoAsAService SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+NoAsAServiceUtility::setRegistrar(function (NoAsAServiceUtility $u): void {
+    $u->clean = [NoAsAServiceClean::class, 'call'];
+    $u->done = [NoAsAServiceDone::class, 'call'];
+    $u->make_error = [NoAsAServiceMakeError::class, 'call'];
+    $u->feature_add = [NoAsAServiceFeatureAdd::class, 'call'];
+    $u->feature_hook = [NoAsAServiceFeatureHook::class, 'call'];
+    $u->feature_init = [NoAsAServiceFeatureInit::class, 'call'];
+    $u->fetcher = [NoAsAServiceFetcher::class, 'call'];
+    $u->make_fetch_def = [NoAsAServiceMakeFetchDef::class, 'call'];
+    $u->make_context = [NoAsAServiceMakeContext::class, 'call'];
+    $u->make_options = [NoAsAServiceMakeOptions::class, 'call'];
+    $u->make_request = [NoAsAServiceMakeRequest::class, 'call'];
+    $u->make_response = [NoAsAServiceMakeResponse::class, 'call'];
+    $u->make_result = [NoAsAServiceMakeResult::class, 'call'];
+    $u->make_point = [NoAsAServiceMakePoint::class, 'call'];
+    $u->make_spec = [NoAsAServiceMakeSpec::class, 'call'];
+    $u->make_url = [NoAsAServiceMakeUrl::class, 'call'];
+    $u->param = [NoAsAServiceParam::class, 'call'];
+    $u->prepare_auth = [NoAsAServicePrepareAuth::class, 'call'];
+    $u->prepare_body = [NoAsAServicePrepareBody::class, 'call'];
+    $u->prepare_headers = [NoAsAServicePrepareHeaders::class, 'call'];
+    $u->prepare_method = [NoAsAServicePrepareMethod::class, 'call'];
+    $u->prepare_params = [NoAsAServicePrepareParams::class, 'call'];
+    $u->prepare_path = [NoAsAServicePreparePath::class, 'call'];
+    $u->prepare_query = [NoAsAServicePrepareQuery::class, 'call'];
+    $u->result_basic = [NoAsAServiceResultBasic::class, 'call'];
+    $u->result_body = [NoAsAServiceResultBody::class, 'call'];
+    $u->result_headers = [NoAsAServiceResultHeaders::class, 'call'];
+    $u->transform_request = [NoAsAServiceTransformRequest::class, 'call'];
+    $u->transform_response = [NoAsAServiceTransformResponse::class, 'call'];
+});

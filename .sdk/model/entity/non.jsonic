@@ -1,0 +1,29 @@
+# Entity: non
+
+main: kit: entity: non: {
+
+  alias: field: {}
+
+  name: "non"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/no"
+          parts: [
+            "no"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
