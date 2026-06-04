@@ -99,14 +99,12 @@ func nonDirectSetup(mockres any) *nonDirectSetupResult {
 	env := envOverride(map[string]any{
 		"NOASASERVICE_TEST_NON_ENTID": map[string]any{},
 		"NOASASERVICE_TEST_LIVE":    "FALSE",
-		"NOASASERVICE_APIKEY":       "NONE",
 	})
 
 	live := env["NOASASERVICE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["NOASASERVICE_APIKEY"],
 		}
 		client := sdk.NewNoAsAServiceSDK(mergedOpts)
 

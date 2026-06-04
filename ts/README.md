@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { NoAsAServiceSDK } from 'no-as-a-service'
 
-const client = new NoAsAServiceSDK({
-  apikey: process.env.NO-AS-A-SERVICE_APIKEY,
-})
+const client = new NoAsAServiceSDK({})
 ```
 
 ### 3. Load a non
@@ -82,7 +80,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new NoAsAServiceSDK({ apikey: '...' })
+const client = new NoAsAServiceSDK()
 const testClient = client.tester()
 ```
 
@@ -118,7 +116,6 @@ const logger = {
 }
 
 const client = new NoAsAServiceSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -129,7 +126,6 @@ Create a `.env.local` file at the project root:
 
 ```
 NO-AS-A-SERVICE_TEST_LIVE=TRUE
-NO-AS-A-SERVICE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,7 +143,6 @@ cd ts && npm test
 
 ```ts
 new NoAsAServiceSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -158,7 +153,6 @@ new NoAsAServiceSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

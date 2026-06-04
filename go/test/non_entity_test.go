@@ -117,7 +117,6 @@ func nonBasicSetup(extra map[string]any) *entityTestSetup {
 		"NOASASERVICE_TEST_NON_ENTID": idmap,
 		"NOASASERVICE_TEST_LIVE":      "FALSE",
 		"NOASASERVICE_TEST_EXPLAIN":   "FALSE",
-		"NOASASERVICE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["NOASASERVICE_TEST_NON_ENTID"])
@@ -128,7 +127,6 @@ func nonBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["NOASASERVICE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["NOASASERVICE_APIKEY"],
 			},
 			extra,
 		})

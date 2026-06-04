@@ -67,14 +67,12 @@ function non_direct_setup($mockres)
     $env = Runner::env_override([
         "NOASASERVICE_TEST_NON_ENTID" => [],
         "NOASASERVICE_TEST_LIVE" => "FALSE",
-        "NOASASERVICE_APIKEY" => "NONE",
     ]);
 
     $live = $env["NOASASERVICE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["NOASASERVICE_APIKEY"],
         ];
         $client = new NoAsAServiceSDK($merged_opts);
         return [

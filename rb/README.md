@@ -31,9 +31,7 @@ loading a specific record.
 ```ruby
 require_relative "NoAsAService_sdk"
 
-client = NoAsAServiceSDK.new({
-  "apikey" => ENV["NO-AS-A-SERVICE_APIKEY"],
-})
+client = NoAsAServiceSDK.new({})
 ```
 
 ### 3. Load a non
@@ -121,7 +119,6 @@ Create a `.env.local` file at the project root:
 
 ```
 NO-AS-A-SERVICE_TEST_LIVE=TRUE
-NO-AS-A-SERVICE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -144,7 +141,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

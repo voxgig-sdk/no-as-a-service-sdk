@@ -91,7 +91,6 @@ def _non_basic_setup(extra):
         "NOASASERVICE_TEST_NON_ENTID": idmap,
         "NOASASERVICE_TEST_LIVE": "FALSE",
         "NOASASERVICE_TEST_EXPLAIN": "FALSE",
-        "NOASASERVICE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +101,6 @@ def _non_basic_setup(extra):
     if env.get("NOASASERVICE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("NOASASERVICE_APIKEY"),
             },
             extra or {},
         ])
