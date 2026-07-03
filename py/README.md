@@ -10,7 +10,7 @@ The Python SDK for the NoAsAService API — an entity-oriented client following 
 
 ## Install
 ```bash
-pip install no-as-a-service-sdk
+pip install voxgig-sdk-no-as-a-service
 ```
 
 Or install from source:

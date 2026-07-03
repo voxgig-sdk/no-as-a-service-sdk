@@ -10,13 +10,13 @@ The Ruby SDK for the NoAsAService API — an entity-oriented client using idioma
 
 ## Install
 ```bash
-gem install no-as-a-service-sdk
+gem install voxgig-sdk-no-as-a-service
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "no-as-a-service-sdk"
+gem "voxgig-sdk-no-as-a-service"
 ```
 
 Then run:

@@ -10,7 +10,7 @@ The PHP SDK for the NoAsAService API — an entity-oriented client using PHP con
 
 ## Install
 ```bash
-composer require voxgig/no-as-a-service-sdk
+composer require voxgig-sdk/no-as-a-service
 ```
 
 

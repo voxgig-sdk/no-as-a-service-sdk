@@ -10,7 +10,7 @@ The Lua SDK for the NoAsAService API — an entity-oriented client using Lua con
 
 ## Install
 ```bash
-luarocks install no-as-a-service-sdk
+luarocks install voxgig-sdk-no-as-a-service
 ```
 
 If the module is not yet published, add the source directory to

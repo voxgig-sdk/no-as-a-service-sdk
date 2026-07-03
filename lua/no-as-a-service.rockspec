@@ -8,12 +8,14 @@ source = {
   dir = "no-as-a-service-sdk/lua"
 }
 description = {
-  summary = "NoAsAService SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Fast public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/no-as-a-service-sdk",
+  issues_url = "https://github.com/voxgig-sdk/no-as-a-service-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "no-as-a-service" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

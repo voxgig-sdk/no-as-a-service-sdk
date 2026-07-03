@@ -10,7 +10,7 @@ The TypeScript SDK for the NoAsAService API — a type-safe, entity-oriented cli
 
 ## Install
 ```bash
-npm install no-as-a-service
+npm install @voxgig-sdk/no-as-a-service
 ```
 ## Tutorial: your first API call
 
