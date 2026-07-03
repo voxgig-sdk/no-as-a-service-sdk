@@ -11,22 +11,7 @@ main: {
       ]
       title: "FastAPI"
       version: "0.1.0"
-      tagline: "Get a random, universal rejection reason — perfect for excuses, jokes, or testing your refusal muscles"
-      homepage: "https://naas.isalman.dev"
-      docs_url: "https://github.com/hotheadhacker/no-as-a-service"
-      license_short: "MIT License"
-      license_md: `- Source code released under the MIT License via the [project repository](https://github.com/hotheadhacker/no-as-a-service).
-- Permits modification, redistribution, and commercial use with minimal restrictions.
-- No attribution requirement is documented for API responses themselves, but crediting the project is appreciated.`
-      about_md: `No-as-a-Service (NaaS) is a lightweight humor API created by [hotheadhacker](https://github.com/hotheadhacker) that serves up a random, generic excuse for saying "no" — useful for jokes, chatbots, status pages, or just defusing meetings. The hosted instance lives at [naas.isalman.dev](https://naas.isalman.dev).
-
-What you get from the API:
-
-- A single endpoint, \`GET /no\`, that returns one randomly chosen rejection from a pool of 1000+ universal phrases.
-- Each response is a JSON object with a single \`reason\` field, e.g. \`{"reason": "This feels like something Future Me would yell at Present Me for agreeing to."}\`.
-
-Operational notes: the public instance applies a rate limit of 120 requests per minute per IP address. No authentication is required. The project is also designed to be self-hostable as a small Node.js / Express service, so you can run your own instance if you need higher throughput or a custom phrase list.`
-      auth: false
     }
   }
 }
+

@@ -85,6 +85,7 @@ function non_basic_setup($extra)
         "NOASASERVICE_TEST_NON_ENTID" => $idmap,
         "NOASASERVICE_TEST_LIVE" => "FALSE",
         "NOASASERVICE_TEST_EXPLAIN" => "FALSE",
+        "NOASASERVICE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -96,6 +97,7 @@ function non_basic_setup($extra)
     if ($env["NOASASERVICE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["NOASASERVICE_APIKEY"],
             ],
             $extra ?? [],
         ]);

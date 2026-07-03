@@ -1,19 +1,8 @@
 # NoAsAService SDK
 
-Get a random, universal rejection reason — perfect for excuses, jokes, or testing your refusal muscles
+FastAPI client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About FastAPI
-
-No-as-a-Service (NaaS) is a lightweight humor API created by [hotheadhacker](https://github.com/hotheadhacker) that serves up a random, generic excuse for saying "no" — useful for jokes, chatbots, status pages, or just defusing meetings. The hosted instance lives at [naas.isalman.dev](https://naas.isalman.dev).
-
-What you get from the API:
-
-- A single endpoint, `GET /no`, that returns one randomly chosen rejection from a pool of 1000+ universal phrases.
-- Each response is a JSON object with a single `reason` field, e.g. `{"reason": "This feels like something Future Me would yell at Present Me for agreeing to."}`.
-
-Operational notes: the public instance applies a rate limit of 120 requests per minute per IP address. No authentication is required. The project is also designed to be self-hostable as a small Node.js / Express service, so you can run your own instance if you need higher throughput or a custom phrase list.
 
 ## Try it
 
@@ -47,27 +36,31 @@ gem install no-as-a-service-sdk
 luarocks install no-as-a-service-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { NoAsAServiceSDK } from 'no-as-a-service'
 
-const client = new NoAsAServiceSDK({})
+const client = new NoAsAServiceSDK({
+  apikey: process.env.NO-AS-A-SERVICE_APIKEY,
+})
 
+// Load non data
+const non = await client.Non().load({})
+console.log(non.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -107,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from noasaservice_sdk import NoAsAServiceSDK
 
-client = NoAsAServiceSDK({})
+client = NoAsAServiceSDK({
+    "apikey": os.environ.get("NO-AS-A-SERVICE_APIKEY"),
+})
 
 
 # Load a specific non
-non, err = client.Non(None).load(
-    {"id": "example_id"}, None
-)
+non, err = client.Non().load({"id": "example_id"})
+print(non)
 ```
 
 ### PHP
@@ -124,13 +119,14 @@ non, err = client.Non(None).load(
 <?php
 require_once 'noasaservice_sdk.php';
 
-$client = new NoAsAServiceSDK([]);
+$client = new NoAsAServiceSDK([
+    "apikey" => getenv("NO-AS-A-SERVICE_APIKEY"),
+]);
 
 
 // Load a specific non
-[$non, $err] = $client->Non(null)->load(
-    ["id" => "example_id"], null
-);
+[$non, $err] = $client->Non()->load(["id" => "example_id"]);
+print_r($non);
 ```
 
 ### Golang
@@ -138,8 +134,13 @@ $client = new NoAsAServiceSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/no-as-a-service-sdk/go"
 
-client := sdk.NewNoAsAServiceSDK(map[string]any{})
+client := sdk.NewNoAsAServiceSDK(map[string]any{
+    "apikey": os.Getenv("NO-AS-A-SERVICE_APIKEY"),
+})
 
+// Load non data
+non, err := client.Non(nil).Load(map[string]any{}, nil)
+fmt.Println(non)
 ```
 
 ### Ruby
@@ -147,13 +148,14 @@ client := sdk.NewNoAsAServiceSDK(map[string]any{})
 ```ruby
 require_relative "NoAsAService_sdk"
 
-client = NoAsAServiceSDK.new({})
+client = NoAsAServiceSDK.new({
+  "apikey" => ENV["NO-AS-A-SERVICE_APIKEY"],
+})
 
 
 # Load a specific non
-non, err = client.Non(nil).load(
-  { "id" => "example_id" }, nil
-)
+non, err = client.Non().load({ "id" => "example_id" })
+puts non
 ```
 
 ### Lua
@@ -161,13 +163,14 @@ non, err = client.Non(nil).load(
 ```lua
 local sdk = require("no-as-a-service_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("NO-AS-A-SERVICE_APIKEY"),
+})
 
 
 -- Load a specific non
-local non, err = client:Non(nil):load(
-  { id = "example_id" }, nil
-)
+local non, err = client:Non():load({ id = "example_id" })
+print(non)
 ```
 
 ## Unit testing in offline mode
@@ -186,25 +189,21 @@ const result = await client.Non().load({ id: 'test01' })
 ### Python
 
 ```python
-client = NoAsAServiceSDK.test(None, None)
-result, err = client.Non(None).load(
-    {"id": "test01"}, None
-)
+client = NoAsAServiceSDK.test()
+result, err = client.Non().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = NoAsAServiceSDK::test(null, null);
-[$result, $err] = $client->Non(null)->load(
-    ["id" => "test01"], null
-);
+$client = NoAsAServiceSDK::test();
+[$result, $err] = $client->Non()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Non(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -213,19 +212,15 @@ result, err := client.Non(nil).Load(
 ### Ruby
 
 ```ruby
-client = NoAsAServiceSDK.test(nil, nil)
-result, err = client.Non(nil).load(
-  { "id" => "test01" }, nil
-)
+client = NoAsAServiceSDK.test
+result, err = client.Non().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Non(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Non():load({ id = "test01" })
 ```
 
 ## How it works
@@ -329,15 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the FastAPI
-
-- Upstream: [https://naas.isalman.dev](https://naas.isalman.dev)
-- API docs: [https://github.com/hotheadhacker/no-as-a-service](https://github.com/hotheadhacker/no-as-a-service)
-
-- Source code released under the MIT License via the [project repository](https://github.com/hotheadhacker/no-as-a-service).
-- Permits modification, redistribution, and commercial use with minimal restrictions.
-- No attribution requirement is documented for API responses themselves, but crediting the project is appreciated.
 
 ---
 

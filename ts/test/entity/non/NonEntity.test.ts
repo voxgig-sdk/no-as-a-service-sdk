@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'NO_AS_A_SERVICE_TEST_NON_ENTID': idmap,
     'NO_AS_A_SERVICE_TEST_LIVE': 'FALSE',
     'NO_AS_A_SERVICE_TEST_EXPLAIN': 'FALSE',
+    'NO_AS_A_SERVICE_APIKEY': 'NONE',
   })
 
   idmap = env['NO_AS_A_SERVICE_TEST_NON_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new NoAsAServiceSDK(merge([
       {
+        apikey: env.NO_AS_A_SERVICE_APIKEY,
       },
       extra
     ]))
