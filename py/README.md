@@ -33,10 +33,12 @@ client = NoAsAServiceSDK()
 
 ### 3. Load a non
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.non.load({"id": "example_id"})
-    print(result)
+    non = client.Non().load({"id": "example_id"})
+    print(non)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = NoAsAServiceSDK.test()
 
-result = client.non.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+non = client.Non().load({"id": "test01"})
+# non contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -217,7 +220,7 @@ API path: `/no`
 
 ### Non
 
-Create an instance: `const non = client.non`
+Create an instance: `non = client.Non()`
 
 #### Operations
 
@@ -227,8 +230,8 @@ Create an instance: `const non = client.non`
 
 #### Example: Load
 
-```ts
-const non = await client.non.load({ id: 'non_id' })
+```python
+non = client.Non().load({"id": "non_id"})
 ```
 
 
@@ -302,7 +305,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-non = client.non
+non = client.Non()
 non.load({"id": "example_id"})
 
 # non.data_get() now returns the loaded non data

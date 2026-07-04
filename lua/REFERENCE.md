@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## NonEntity
 
 ```lua
-local non = client:non(nil)
+local non = client:Non(nil)
 ```
 
 ### Operations
@@ -93,7 +93,7 @@ local non = client:non(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:non():load({ id = "non_id" })
+local result, err = client:Non():load({ id = "non_id" })
 ```
 
 ### Common Methods

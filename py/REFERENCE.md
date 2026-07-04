@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## NonEntity
 
 ```python
-non = client.non
+non = client.Non()
 ```
 
 ### Operations
@@ -90,7 +90,7 @@ non = client.non
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.non.load({"id": "non_id"})
+result = client.Non().load({"id": "non_id"})
 ```
 
 ### Common Methods

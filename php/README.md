@@ -33,9 +33,10 @@ $client = new NoAsAServiceSDK();
 
 ```php
 try {
-    $result = $client->non()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Non record (throws on error).
+    $non = $client->Non()->load(["id" => "example_id"]);
+    print_r($non);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = NoAsAServiceSDK::test();
+$client = NoAsAServiceSDK::test([
+    "entity" => ["non" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->non()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$non = $client->Non()->load(["id" => "test01"]);
+print_r($non);
 ```
 
 ### Use a custom fetch function
@@ -222,7 +227,7 @@ API path: `/no`
 
 ### Non
 
-Create an instance: `const non = client.non`
+Create an instance: `$non = $client->Non();`
 
 #### Operations
 
@@ -232,8 +237,9 @@ Create an instance: `const non = client.non`
 
 #### Example: Load
 
-```ts
-const non = await client.non.load({ id: 'non_id' })
+```php
+// load() returns the bare Non record (throws on error).
+$non = $client->Non()->load(["id" => "non_id"]);
 ```
 
 
@@ -308,7 +314,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$non = $client->non();
+$non = $client->Non();
 $non->load(["id" => "example_id"]);
 
 // $non->dataGet() now returns the loaded non data

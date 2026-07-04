@@ -109,7 +109,7 @@ Alias for `NoAsAServiceSDK.test()`.
 ## NonEntity
 
 ```ts
-const non = client.non
+const non = client.Non()
 ```
 
 ### Operations
@@ -119,7 +119,7 @@ const non = client.non
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.non.load({ id: 'non_id' })
+const result = await client.Non().load({ id: 'non_id' })
 ```
 
 ### Common Methods

@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## NonEntity
 
 ```ruby
-non = client.non
+non = client.Non
 ```
 
 ### Operations
@@ -96,7 +96,7 @@ non = client.non
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.non.load({ "id" => "non_id" })
+result = client.Non.load({ "id" => "non_id" })
 ```
 
 ### Common Methods

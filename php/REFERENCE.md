@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## NonEntity
 
 ```php
-$non = $client->non();
+$non = $client->Non();
 ```
 
 ### Operations
@@ -95,7 +95,7 @@ $non = $client->non();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->non()->load(["id" => "non_id"]);
+$result = $client->Non()->load(["id" => "non_id"]);
 ```
 
 ### Common Methods

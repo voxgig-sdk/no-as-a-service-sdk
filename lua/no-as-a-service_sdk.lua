@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:non():list() / client:non():load({ id = ... })
-function NoAsAServiceSDK:non(data)
+-- Idiomatic facade: client:Non():list() / client:Non():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function NoAsAServiceSDK:Non(data)
   local EntityMod = require("entity.non_entity")
   if data == nil then
     if self._non == nil then
@@ -253,12 +254,6 @@ function NoAsAServiceSDK:non(data)
     end
     return self._non
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:non() instead.
-function NoAsAServiceSDK:Non(data)
-  local EntityMod = require("entity.non_entity")
   return EntityMod.new(self, data)
 end
 

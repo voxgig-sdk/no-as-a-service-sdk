@@ -233,10 +233,10 @@ class NoAsAServiceSDK
 
     private $_non = null;
 
-    // Idiomatic facade: $client->non()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Non() (PHP method
-    // names are case-insensitive).
-    public function non($data = null)
+    // Canonical facade: $client->Non()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->non()
+    // resolves here too.
+    public function Non($data = null)
     {
         require_once __DIR__ . '/entity/non_entity.php';
         if ($data === null) {

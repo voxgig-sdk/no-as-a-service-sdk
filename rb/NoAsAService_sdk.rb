@@ -208,13 +208,7 @@ class NoAsAServiceSDK
   end
 
 
-  # Idiomatic facade: client.non.list / client.non.load({ "id" => ... })
-  def non
-    require_relative 'entity/non_entity'
-    @non ||= NonEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.non instead.
+  # Canonical facade: client.Non.list / client.Non.load({ "id" => ... })
   def Non(data = nil)
     require_relative 'entity/non_entity'
     NonEntity.new(self, data)

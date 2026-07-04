@@ -26,9 +26,9 @@ import { NoAsAServiceSDK } from '@voxgig-sdk/no-as-a-service'
 
 const client = new NoAsAServiceSDK()
 
-// Load non data
-const non = await client.non.load({})
-console.log(non.data)
+// Load non data (returns a Non)
+const non = await client.Non().load()
+console.log(non)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,8 +84,8 @@ from noasaservice_sdk import NoAsAServiceSDK
 client = NoAsAServiceSDK()
 
 
-# Load a specific non
-non = client.non.load({"id": "example_id"})
+# Load a specific non (returns the record, raises on error)
+non = client.Non().load({"id": "example_id"})
 print(non)
 ```
 
@@ -98,8 +98,8 @@ require_once 'noasaservice_sdk.php';
 $client = new NoAsAServiceSDK();
 
 
-// Load a specific non
-$non = $client->non()->load(["id" => "example_id"]);
+// Load a specific non (returns the bare record; throws on error)
+$non = $client->Non()->load(["id" => "example_id"]);
 print_r($non);
 ```
 
@@ -123,8 +123,8 @@ require_relative "NoAsAService_sdk"
 client = NoAsAServiceSDK.new
 
 
-# Load a specific non
-non = client.non.load({ "id" => "example_id" })
+# Load a specific non (returns the bare record; raises on error)
+non = client.Non.load({ "id" => "example_id" })
 puts non
 ```
 
@@ -137,7 +137,7 @@ local client = sdk.new()
 
 
 -- Load a specific non
-local non, err = client:non():load({ id = "example_id" })
+local non, err = client:Non():load({ id = "example_id" })
 print(non)
 ```
 
@@ -150,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = NoAsAServiceSDK.test()
-const result = await client.non.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const non = await client.Non().load({ id: 'test01' })
+// non is a bare Non populated with mock data
+console.log(non)
 ```
 
 ### Python
 
 ```python
 client = NoAsAServiceSDK.test()
-result = client.non.load({"id": "test01"})
+non = client.Non().load({"id": "test01"})
+print(non)
 ```
 
 ### PHP
 
 ```php
-$client = NoAsAServiceSDK::test();
-$result = $client->non()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = NoAsAServiceSDK::test([
+    "entity" => ["non" => ["test01" => ["id" => "test01"]]],
+]);
+$non = $client->Non()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -180,15 +185,18 @@ result, err := client.Non(nil).Load(
 ### Ruby
 
 ```ruby
-client = NoAsAServiceSDK.test
-result = client.non.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = NoAsAServiceSDK.test({
+  "entity" => { "non" => { "test01" => { "id" => "test01" } } },
+})
+non = client.Non.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:non():load({ id = "test01" })
+local result, err = client:Non():load({ id = "test01" })
 ```
 
 ## How it works
@@ -236,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 
