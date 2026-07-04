@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:non():list() / client:non():load({ id = ... })
+function NoAsAServiceSDK:non(data)
+  local EntityMod = require("entity.non_entity")
+  if data == nil then
+    if self._non == nil then
+      self._non = EntityMod.new(self, nil)
+    end
+    return self._non
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:non() instead.
 function NoAsAServiceSDK:Non(data)
   local EntityMod = require("entity.non_entity")
   return EntityMod.new(self, data)

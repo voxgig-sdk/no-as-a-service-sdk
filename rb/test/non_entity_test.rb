@@ -42,8 +42,7 @@ class NonEntityTest < Minitest::Test
     # LOAD
     non_ref01_ent = client.Non(nil)
     non_ref01_match_dt0 = {}
-    non_ref01_data_dt0_loaded, err = non_ref01_ent.load(non_ref01_match_dt0, nil)
-    assert_nil err
+    non_ref01_data_dt0_loaded = non_ref01_ent.load(non_ref01_match_dt0, nil)
     assert !non_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def non_basic_setup(extra)
     "NOASASERVICE_TEST_NON_ENTID" => idmap,
     "NOASASERVICE_TEST_LIVE" => "FALSE",
     "NOASASERVICE_TEST_EXPLAIN" => "FALSE",
-    "NOASASERVICE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def non_basic_setup(extra)
   if env["NOASASERVICE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["NOASASERVICE_APIKEY"],
       },
       extra || {},
     ])

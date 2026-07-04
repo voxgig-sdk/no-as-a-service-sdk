@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -110,7 +109,7 @@ Alias for `NoAsAServiceSDK.test()`.
 ## NonEntity
 
 ```ts
-const non = client.Non()
+const non = client.non
 ```
 
 ### Operations
@@ -120,7 +119,7 @@ const non = client.Non()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Non().load({ id: 'non_id' })
+const result = await client.non.load({ id: 'non_id' })
 ```
 
 ### Common Methods

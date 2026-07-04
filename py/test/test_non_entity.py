@@ -49,8 +49,7 @@ class TestNonEntity:
         # LOAD
         non_ref01_ent = client.Non(None)
         non_ref01_match_dt0 = {}
-        non_ref01_data_dt0_loaded, err = non_ref01_ent.load(non_ref01_match_dt0, None)
-        assert err is None
+        non_ref01_data_dt0_loaded = non_ref01_ent.load(non_ref01_match_dt0, None)
         assert non_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _non_basic_setup(extra):
         "NOASASERVICE_TEST_NON_ENTID": idmap,
         "NOASASERVICE_TEST_LIVE": "FALSE",
         "NOASASERVICE_TEST_EXPLAIN": "FALSE",
-        "NOASASERVICE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _non_basic_setup(extra):
     if env.get("NOASASERVICE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("NOASASERVICE_APIKEY"),
             },
             extra or {},
         ])

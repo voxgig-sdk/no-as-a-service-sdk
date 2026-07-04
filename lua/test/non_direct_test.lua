@@ -62,14 +62,12 @@ function non_direct_setup(mockres)
   local env = runner.env_override({
     ["NOASASERVICE_TEST_NON_ENTID"] = {},
     ["NOASASERVICE_TEST_LIVE"] = "FALSE",
-    ["NOASASERVICE_APIKEY"] = "NONE",
   })
 
   local live = env["NOASASERVICE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["NOASASERVICE_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

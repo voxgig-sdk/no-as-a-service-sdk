@@ -2,6 +2,8 @@
 
 import { NonEntity } from './entity/NonEntity'
 
+export type * from './NoAsAServiceTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class NoAsAServiceSDK {
 
 
 
+  _non?: NonEntity
+
+  // Idiomatic facade: `client.non.list()` / `client.non.load({ id })`.
+  get non(): NonEntity {
+    return (this._non ??= new NonEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.non` instead. */
   Non(data?: any) {
     const self = this
     return new NonEntity(self,data)

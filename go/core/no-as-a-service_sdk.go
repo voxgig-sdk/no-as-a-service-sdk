@@ -245,6 +245,9 @@ func (sdk *NoAsAServiceSDK) Direct(fetchargs map[string]any) (map[string]any, er
 }
 
 
+// Non returns a Non entity bound to this client.
+// Idiomatic usage: client.Non(nil).List(nil, nil) or
+// client.Non(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *NoAsAServiceSDK) Non(data map[string]any) NoAsAServiceEntity {
 	return NewNonEntityFunc(sdk, data)
 }

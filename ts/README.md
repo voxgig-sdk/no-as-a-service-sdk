@@ -9,9 +9,12 @@ The TypeScript SDK for the NoAsAService API — a type-safe, entity-oriented cli
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/no-as-a-service
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/no-as-a-service-sdk/releases](https://github.com/voxgig-sdk/no-as-a-service-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { NoAsAServiceSDK } from 'no-as-a-service'
+import { NoAsAServiceSDK } from '@voxgig-sdk/no-as-a-service'
 
-const client = new NoAsAServiceSDK({
-  apikey: process.env.NO-AS-A-SERVICE_APIKEY,
-})
+const client = new NoAsAServiceSDK()
 ```
 
 ### 3. Load a non
 
 ```ts
-const result = await client.Non().load({ id: 'example_id' })
+const result = await client.non.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = NoAsAServiceSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.non.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new NoAsAServiceSDK({ apikey: '...' })
+const client = new NoAsAServiceSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.non
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new NoAsAServiceSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -133,8 +133,7 @@ const client = new NoAsAServiceSDK({
 Create a `.env.local` file at the project root:
 
 ```
-NO-AS-A-SERVICE_TEST_LIVE=TRUE
-NO-AS-A-SERVICE_APIKEY=<your-key>
+NO_AS_A_SERVICE_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new NoAsAServiceSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new NoAsAServiceSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -265,7 +262,7 @@ API path: `/no`
 
 ### Non
 
-Create an instance: `const non = client.Non()`
+Create an instance: `const non = client.non`
 
 #### Operations
 
@@ -276,7 +273,7 @@ Create an instance: `const non = client.Non()`
 #### Example: Load
 
 ```ts
-const non = await client.Non().load({ id: 'non_id' })
+const non = await client.non.load({ id: 'non_id' })
 ```
 
 
@@ -337,7 +334,7 @@ no-as-a-service/
 Import the SDK from the package root:
 
 ```ts
-import { NoAsAServiceSDK } from 'no-as-a-service'
+import { NoAsAServiceSDK } from '@voxgig-sdk/no-as-a-service'
 ```
 
 ### Entity state
@@ -347,11 +344,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const non = client.non
+await non.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// non.data() now returns the loaded non data
+// non.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -1,7 +1,13 @@
 # NoAsAService SDK Non entity
 
+from __future__ import annotations
+
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
+from noasaservice_types import (
+    Non,
+    NonLoadMatch,
+)
 
 
 class NonEntity:
@@ -44,7 +50,7 @@ class NonEntity:
             self._data = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetData")
 
-    def data_get(self):
+    def data_get(self) -> Non:
         self._utility.feature_hook(self._entctx, "GetData")
         return vs.clone(self._data)
 
@@ -53,12 +59,12 @@ class NonEntity:
             self._match = helpers.to_map(vs.clone(args)) or {}
             self._utility.feature_hook(self._entctx, "SetMatch")
 
-    def match_get(self):
+    def match_get(self) -> Non:
         self._utility.feature_hook(self._entctx, "GetMatch")
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch, ctrl=None):
+    def load(self, reqmatch: NonLoadMatch, ctrl=None) -> Non:
         utility = self._utility
         ctx = utility.make_context({
             "opname": "load",

@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch NonLoadMatch
+---@param ctrl? table
+---@return Non
+---@return string? err
 function NonEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
