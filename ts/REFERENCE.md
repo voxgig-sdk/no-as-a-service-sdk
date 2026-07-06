@@ -119,7 +119,7 @@ const non = client.Non()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Non().load({ id: 'non_id' })
+const result = await client.Non().load()
 ```
 
 ### Common Methods

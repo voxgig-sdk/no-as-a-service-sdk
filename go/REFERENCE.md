@@ -100,7 +100,7 @@ non := client.Non(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Non(nil).Load(map[string]any{"id": "non_id"}, nil)
+result, err := client.Non(nil).Load(nil, nil)
 ```
 
 ### Common Methods

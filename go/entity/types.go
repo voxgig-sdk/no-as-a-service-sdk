@@ -12,8 +12,7 @@ import "encoding/json"
 type Non struct {
 }
 
-// NonLoadMatch mirrors the non fields as an all-optional match
-// filter (Go analog of Partial<Non>).
+// NonLoadMatch is the typed request payload for Non.LoadTyped.
 type NonLoadMatch struct {
 }
 

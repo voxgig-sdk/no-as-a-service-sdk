@@ -12,7 +12,7 @@
 class Non
 end
 
-# Match filter for Non#load (any subset of Non fields).
+# Request payload for Non#load.
 class NonLoadMatch
 end
 

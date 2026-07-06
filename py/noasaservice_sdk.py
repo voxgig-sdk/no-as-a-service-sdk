@@ -221,7 +221,7 @@ class NoAsAServiceSDK:
 
 
     def Non(self, data=None) -> "NonEntity":
-        """Entity factory: client.Non().list({}) / client.Non().load({"id": ...})."""
+        """Entity factory: client.Non().list() / client.Non().load({"id": ...})."""
         from entity.non_entity import NonEntity
         return NonEntity(self, data)
 

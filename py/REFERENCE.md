@@ -8,7 +8,7 @@ Complete API reference for the NoAsAService Python SDK.
 ### Constructor
 
 ```python
-from no-as-a-service_sdk import NoAsAServiceSDK
+from noasaservice_sdk import NoAsAServiceSDK
 
 client = NoAsAServiceSDK(options)
 ```
@@ -90,7 +90,7 @@ non = client.Non()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Non().load({"id": "non_id"})
+result = client.Non().load()
 ```
 
 ### Common Methods

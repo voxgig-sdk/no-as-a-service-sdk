@@ -93,7 +93,7 @@ local non = client:Non(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Non():load({ id = "non_id" })
+local result, err = client:Non():load()
 ```
 
 ### Common Methods

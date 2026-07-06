@@ -8,7 +8,7 @@ Complete API reference for the NoAsAService Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'no-as-a-service_sdk'
+require_relative 'NoAsAService_sdk'
 
 client = NoAsAServiceSDK.new(options)
 ```
@@ -96,7 +96,7 @@ non = client.Non
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Non.load({ "id" => "non_id" })
+result = client.Non.load()
 ```
 
 ### Common Methods

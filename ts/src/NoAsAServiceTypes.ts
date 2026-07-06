@@ -8,5 +8,6 @@
 export interface Non {
 }
 
-export type NonLoadMatch = Partial<Non>
+export interface NonLoadMatch {
+}
 
