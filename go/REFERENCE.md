@@ -91,6 +91,7 @@ same parameters as `Direct()`.
 
 ```go
 non := client.Non(nil)
+fmt.Println(non.GetName()) // "non"
 ```
 
 ### Operations
@@ -101,6 +102,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Non(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
