@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- NoAsAService SDK exists test
 
 local sdk = require("no-as-a-service_sdk")
 
