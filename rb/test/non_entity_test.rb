@@ -26,7 +26,7 @@ class NonEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set NOASASERVICE_TEST_NON_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set NO_AS_A_SERVICE_TEST_NON_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -74,22 +74,22 @@ def non_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["NOASASERVICE_TEST_NON_ENTID"]
+  entid_env_raw = ENV["NO_AS_A_SERVICE_TEST_NON_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "NOASASERVICE_TEST_NON_ENTID" => idmap,
-    "NOASASERVICE_TEST_LIVE" => "FALSE",
-    "NOASASERVICE_TEST_EXPLAIN" => "FALSE",
+    "NO_AS_A_SERVICE_TEST_NON_ENTID" => idmap,
+    "NO_AS_A_SERVICE_TEST_LIVE" => "FALSE",
+    "NO_AS_A_SERVICE_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["NOASASERVICE_TEST_NON_ENTID"])
+    env["NO_AS_A_SERVICE_TEST_NON_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["NOASASERVICE_TEST_LIVE"] == "TRUE"
+  if env["NO_AS_A_SERVICE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -98,13 +98,13 @@ def non_basic_setup(extra)
     client = NoAsAServiceSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["NOASASERVICE_TEST_LIVE"] == "TRUE"
+  live = env["NO_AS_A_SERVICE_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["NOASASERVICE_TEST_EXPLAIN"] == "TRUE",
+    explain: env["NO_AS_A_SERVICE_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

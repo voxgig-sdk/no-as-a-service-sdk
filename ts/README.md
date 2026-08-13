@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = NoAsAServiceSDK.test()
 
 const non = await client.Non().load()
-// non is a bare entity populated with mock response data
+// non is the entity, populated with mock response data
+// — call non.data() for the record itself
 console.log(non)
 ```
 

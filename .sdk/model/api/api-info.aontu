@@ -5,6 +5,7 @@ main: {
   kit: {
     info: {
       auth: false
+      description: "The FastAPI API."
       servers: [
         {
           url: "https://naas.isalman.dev"
@@ -15,3 +16,5 @@ main: {
       website: "https://naas.isalman.dev"
     }
   }
+}
+

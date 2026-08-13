@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from noasaservice_sdk.utility.voxgig_struct import voxgig_struct as vs
 from noasaservice_sdk import NoAsAServiceSDK
-from core import helpers
+from noasaservice_sdk.core import helpers
 from test import runner
 
 
@@ -56,11 +56,11 @@ def _non_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "NOASASERVICE_TEST_NON_ENTID": {},
-        "NOASASERVICE_TEST_LIVE": "FALSE",
+        "NO_AS_A_SERVICE_TEST_NON_ENTID": {},
+        "NO_AS_A_SERVICE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("NOASASERVICE_TEST_LIVE") == "TRUE"
+    live = env.get("NO_AS_A_SERVICE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

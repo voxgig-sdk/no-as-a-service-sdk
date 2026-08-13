@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# NoAsAService SDK exists test
 
 import pytest
 from noasaservice_sdk import NoAsAServiceSDK

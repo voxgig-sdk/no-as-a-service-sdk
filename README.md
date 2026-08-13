@@ -36,9 +36,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = NoAsAServiceSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = NoAsAServiceSDK.test({
+  entity: {
+    non: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const non = await client.Non().load()
-// non is a bare Non populated with mock data
+// non is the Non entity, populated with mock data
+// — call non.data() for the record itself
 console.log(non)
 ```
 
@@ -180,7 +189,7 @@ require_once 'noasaservice_sdk.php';
 $client = new NoAsAServiceSDK();
 
 
-// Load a specific non (returns the bare record; throws on error)
+// Load a specific non (returns the ENTITY; call data_get() for the record; throws on error)
 $non = $client->Non()->load();
 print_r($non);
 ```
@@ -208,7 +217,7 @@ require_relative "NoAsAService_sdk"
 client = NoAsAServiceSDK.new
 
 
-# Load a specific non (returns the bare record; raises on error)
+# Load a specific non (returns the ENTITY; call data_get for the record)
 non = client.Non.load()
 puts non
 ```
@@ -342,6 +351,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://naas.isalman.dev](https://naas.isalman.dev)
 

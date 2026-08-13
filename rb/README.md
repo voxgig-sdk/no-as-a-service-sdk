@@ -34,7 +34,7 @@ client = NoAsAServiceSDK.new
 
 ```ruby
 begin
-  # load returns the bare Non record (raises on error).
+  # load returns the ENTITY — call data_get for the Non record (raises on error).
   non = client.Non.load()
   puts non
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = NoAsAServiceSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 non = client.Non.load()
 puts non
 ```
@@ -257,7 +258,7 @@ Create an instance: `non = client.Non`
 #### Example: Load
 
 ```ruby
-# load returns the bare Non record (raises on error).
+# load returns the ENTITY — call data_get for the Non record (raises on error).
 non = client.Non.load()
 ```
 

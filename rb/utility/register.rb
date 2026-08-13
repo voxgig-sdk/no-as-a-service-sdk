@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ NoAsAServiceUtility.registrar = ->(u) {
   u.prepare_params = NoAsAServiceUtilities::PrepareParams
   u.prepare_path = NoAsAServiceUtilities::PreparePath
   u.prepare_query = NoAsAServiceUtilities::PrepareQuery
+  u.graphql_body = NoAsAServiceUtilities::GraphqlBody
+  u.graphql_errors = NoAsAServiceUtilities::GraphqlErrors
   u.result_basic = NoAsAServiceUtilities::ResultBasic
   u.result_body = NoAsAServiceUtilities::ResultBody
   u.result_headers = NoAsAServiceUtilities::ResultHeaders

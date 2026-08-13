@@ -23,8 +23,8 @@ module NoAsAServiceTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("NOASASERVICE_TEST_LIVE")
-    override = getenv("NOASASERVICE_TEST_OVERRIDE")
+    live = getenv("NO_AS_A_SERVICE_TEST_LIVE")
+    override = getenv("NO_AS_A_SERVICE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module NoAsAServiceTestRunner
       end
     end
 
-    explain = getenv("NOASASERVICE_TEST_EXPLAIN")
-    m["NOASASERVICE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("NO_AS_A_SERVICE_TEST_EXPLAIN")
+    m["NO_AS_A_SERVICE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

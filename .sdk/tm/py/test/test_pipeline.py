@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import NoAsAServiceSDK
-from core.error import NoAsAServiceError
-from core.result import NoAsAServiceResult
-from core.response import NoAsAServiceResponse
-from core.spec import NoAsAServiceSpec
-from feature.base_feature import NoAsAServiceBaseFeature
+from projectname_sdk.core.error import NoAsAServiceError
+from projectname_sdk.core.result import NoAsAServiceResult
+from projectname_sdk.core.response import NoAsAServiceResponse
+from projectname_sdk.core.spec import NoAsAServiceSpec
+from projectname_sdk.feature.base_feature import NoAsAServiceBaseFeature
 
 
 def _client():

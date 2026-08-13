@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import NoAsAServiceControl
-from core.error import NoAsAServiceError
-from core.result import NoAsAServiceResult
-from core.spec import NoAsAServiceSpec
+from noasaservice_sdk.config import make_config
+from noasaservice_sdk.features import _make_feature
+from noasaservice_sdk.core.control import NoAsAServiceControl
+from noasaservice_sdk.core.error import NoAsAServiceError
+from noasaservice_sdk.core.result import NoAsAServiceResult
+from noasaservice_sdk.core.spec import NoAsAServiceSpec
 
 
 # True when this SDK was generated with the named feature.

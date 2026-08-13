@@ -59,11 +59,11 @@ def non_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "NOASASERVICE_TEST_NON_ENTID" => {},
-    "NOASASERVICE_TEST_LIVE" => "FALSE",
+    "NO_AS_A_SERVICE_TEST_NON_ENTID" => {},
+    "NO_AS_A_SERVICE_TEST_LIVE" => "FALSE",
   })
 
-  live = env["NOASASERVICE_TEST_LIVE"] == "TRUE"
+  live = env["NO_AS_A_SERVICE_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

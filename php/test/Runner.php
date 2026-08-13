@@ -43,8 +43,8 @@ class NoAsAServiceTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('NOASASERVICE_TEST_LIVE');
-        $override = self::getenv('NOASASERVICE_TEST_OVERRIDE');
+        $live = self::getenv('NO_AS_A_SERVICE_TEST_LIVE');
+        $override = self::getenv('NO_AS_A_SERVICE_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class NoAsAServiceTestRunner
             }
         }
 
-        $explain = self::getenv('NOASASERVICE_TEST_EXPLAIN');
+        $explain = self::getenv('NO_AS_A_SERVICE_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['NOASASERVICE_TEST_EXPLAIN'] = $explain;
+            $m['NO_AS_A_SERVICE_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;
