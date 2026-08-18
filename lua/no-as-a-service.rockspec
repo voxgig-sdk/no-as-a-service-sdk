@@ -23,6 +23,7 @@ build = {
   modules = {
     ["no-as-a-service_sdk"] = "no-as-a-service_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

@@ -28,7 +28,7 @@ class NoAsAServiceSDK
     utility = NoAsAServiceUtility.new
     @_utility = utility
 
-    config = NoAsAServiceConfig.make_config
+    config = NoAsAServiceConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

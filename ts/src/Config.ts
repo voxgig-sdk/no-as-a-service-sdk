@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://naas.isalman.dev',
+    base: "https://naas.isalman.dev",
 
     headers: {
       "content-type": "application/json"
@@ -61,7 +61,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -73,11 +72,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
