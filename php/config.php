@@ -33,6 +33,9 @@ class NoAsAServiceConfig
         return [
             "main" => [
                 "name" => "NoAsAService",
+                "slug" => "no-as-a-service",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
