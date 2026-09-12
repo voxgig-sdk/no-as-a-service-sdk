@@ -54,14 +54,19 @@ module NoAsAServiceConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/no",
-                  "parts" => [
-                    "no",
+                  "segments" => [
+                    {
+                      "lit" => "no",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "no",
+                  ],
                 },
               ],
             },

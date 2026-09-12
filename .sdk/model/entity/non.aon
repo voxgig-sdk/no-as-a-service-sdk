@@ -12,8 +12,10 @@ main: kit: entity: non: {
         {
           method: "GET"
           orig: "/no"
-          parts: [
-            "no"
+          segments: [
+            {
+              lit: "no"
+            }
           ]
           transform: {
             req: "`reqdata`"
