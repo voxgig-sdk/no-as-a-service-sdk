@@ -103,7 +103,7 @@ local result, err = client:Non():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/no-as-a-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-sdk/releases) |
+| TypeScript | `@voxgig-sdk/no-as-a-service-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-sdk/releases) |
 | Python | `voxgig-sdk-no-as-a-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-sdk/releases) |
 | PHP | `voxgig-sdk/no-as-a-service` | publish pending — [install from git tag](https://github.com/voxgig-sdk/no-as-a-service-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/no-as-a-service-sdk/go` | `go get github.com/voxgig-sdk/no-as-a-service-sdk/go@latest` |
@@ -117,7 +117,7 @@ local result, err = client:Non():load()
 ### TypeScript
 
 ```ts
-import { NoAsAServiceSDK } from '@voxgig-sdk/no-as-a-service'
+import { NoAsAServiceSDK } from '@voxgig-sdk/no-as-a-service-sdk'
 
 const client = new NoAsAServiceSDK()
 
