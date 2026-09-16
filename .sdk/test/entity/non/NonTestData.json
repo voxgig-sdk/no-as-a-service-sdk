@@ -16,5 +16,26 @@
     "non": {
       "non_ref01": {}
     }
+  },
+  "requests": {
+    "GET /no": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "get_random_reason_no_get",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
