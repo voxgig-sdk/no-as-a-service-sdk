@@ -1,0 +1,39 @@
+# Entity: non
+
+main: kit: entity: non: {
+
+  alias: field: {}
+
+  name: "non"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /no"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/no"
+          s: [
+            {
+              lit: "no"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

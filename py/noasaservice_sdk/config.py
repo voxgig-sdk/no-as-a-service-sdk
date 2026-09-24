@@ -121,7 +121,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/no",
@@ -130,14 +129,16 @@ def make_config():
                     "lit": "no",
                   },
                 ],
-                "select": {},
+                "parts": [
+                  "no",
+                ],
+                "rename": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "parts": [
-                  "no",
-                ],
+                "args": {},
+                "select": {},
               },
             ],
           },

@@ -104,7 +104,6 @@ module NoAsAServiceConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/no",
@@ -113,14 +112,16 @@ module NoAsAServiceConfig
                       "lit" => "no",
                     },
                   ],
-                  "select" => {},
+                  "parts" => [
+                    "no",
+                  ],
+                  "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "parts" => [
-                    "no",
-                  ],
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
