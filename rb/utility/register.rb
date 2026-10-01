@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 NoAsAServiceUtility.registrar = ->(u) {
   u.clean = NoAsAServiceUtilities::Clean
+  u.clean_add = NoAsAServiceUtilities::CleanAdd
+  u.clean_explain = NoAsAServiceUtilities::CleanExplain
   u.done = NoAsAServiceUtilities::Done
   u.make_error = NoAsAServiceUtilities::MakeError
   u.feature_add = NoAsAServiceUtilities::FeatureAdd
