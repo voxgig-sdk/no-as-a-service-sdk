@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { NoAsAServiceSDK, BaseFeature, stdutil } from '../../..'
+import { NoAsAServiceSDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,8 @@ describe('NonEntity', async () => {
   })
 
 
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.NO_AS_A_SERVICE_TEST_LIVE
@@ -51,7 +53,7 @@ describe('NonEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"non","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /no","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/no","q":{},"r":{},"s":[{"lit":"no"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"non","name__orig":"non","Name":"Non","name_":"non","name-":"non","NAME":"NON","index$":0}, {"active":true,"entity":"non","key$":"BasicNonFlow","kind":"basic","name":"BasicNonFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"non_ref01","srcdatavar":"non_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-non_ref01"}}],"index$":0}]}, 'Non', {"GET /no":{"protocol":"http","parameters":[]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"non","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /no","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/no","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"no"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"non","name__orig":"non","Name":"Non","name_":"non","name-":"non","NAME":"NON","index$":0}, {"active":true,"entity":"non","key$":"BasicNonFlow","kind":"basic","name":"BasicNonFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"non_ref01","srcdatavar":"non_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-non_ref01"}}],"index$":0}]}, 'Non', {"GET /no":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +74,12 @@ describe('NonEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options
